@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -63,6 +65,18 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   @override
+  void initState() {
+    print("time");
+    Timer(const Duration(minutes: 1), () {
+      launchUrl(
+        Uri.parse("https://www.youtube.com"),
+        webOnlyWindowName: "_blank",
+      );
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
@@ -106,7 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
                 onPressed: () {
                   launchUrl(
-                    Uri.parse("https://www.youtube.com/watch?v=k9d4o0UK880"),
+                    Uri.parse("https://www.youtube.com"),
                     webOnlyWindowName: "_blank",
                   );
                 },
